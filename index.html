@@ -14,12 +14,98 @@
 		<!-- Bootstrap theme -->
 		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
 		<link href="css/my.css" rel="stylesheet"/>
+		<link href="css/main.css" rel="stylesheet"/>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/typed.js" type="text/javascript"></script>
+		<script>
+	    $(function(){
+	    	var say='abcdefghijklmnopqrstuvwxyz';
+	    	var saymore='1234567890';
+	    	
+	        $("#typed").typed({
+	        	
+	            strings: [say,saymore],
+	            typeSpeed: 50,
+	            loop: false,
+	            contentType: 'html', // or text
+	            // defaults to false for infinite loop
+	        });
+	        
+	      
+	    });
+	    window.onload=function(){
+	    	
+	        $('#together').fadeIn('slow');
+	        setInterval('refresh();',1000);
+	    }
+	    function refresh(){
+	    	var begin=new Date('2012/03/30 20:00:00').getTime();
+	        var now=new Date().getTime();
+	        var diff=(now-begin)/1000;
+	        
+	        var day=parseInt(diff/(24*60*60));
+	        
+	        var second=parseInt(diff%(24*60*60));
+	        var min=parseInt(second/60);
+	        second=parseInt(second%60);
+	        var hour=parseInt(min/60);
+	        min=parseInt(min%60);
+	        $('#together').html('现在是我们在一起的 </br>'+day+' 天 '+(hour==0?'':(hour+' 小时 '))+(min==0?'':(min+' 分 '))+(second==0?'':(second+' 秒')));
+	    }
+		</script>
+		<style>
+        /* code for animated blinking cursor */
+        .typed-cursor{
+            opacity: 1;
+            font-weight: 100;
+            -webkit-animation: blink 0.7s infinite;
+            -moz-animation: blink 0.7s infinite;
+            -ms-animation: blink 0.7s infinite;
+            -o-animation: blink 0.7s infinite;
+            animation: blink 0.7s infinite;
+        }
+        @-keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+        @-webkit-keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+        @-moz-keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+        @-ms-keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+        @-o-keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+    </style>
 	</head>
-
+	
 	<body>
 		<div class="container">
 			<div class="row">
-	<div class="col-xs-3 col-md-3"><img src="img/left.jpg" alt="..." class="img-circle img-responsive"></div>
+	<div class="col-xs-3 col-md-3"><img src="img/left.jpg" alt="..." class="img-circle img-responsive">
+	
+	
+	<div class="text-editor-wrap">
+			<div class="title-bar"><span class="title">我想对你说 </span></div>
+			<div class="text-body">
+				<span id="typed"></span>
+			</div>
+		</div>
+	</div>
 	<div class="col-xs-6 col-md-6" >
 		<div class="row">
 			<div class="col-xs-4 col-md-4">
@@ -56,11 +142,14 @@
 		</div>
 	</div>
 	
-	<div class="col-xs-3 col-md-3"><img src="img/right.jpg" alt="..." class="img-circle img-responsive"></div>
+	<div class="col-xs-3 col-md-3"><img src="img/right.jpg" alt="..." class="img-circle img-responsive">
+	<div id="together" style="display: none;margin-left: 35px;margin-top: 25px;font-family:'microsoft yahei';font-size:24px;color:#666">
+	我们在一起四年啦
+	</div>
+	</div>
 	</div>
 	    </div>
-		<script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+	
 	</body>
 
 </html>
